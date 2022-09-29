@@ -2,15 +2,15 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
-import HomeCourses from "../components/Home/HomeCourses"
+import HomeGuitars from "../components/Home/HomeGuitars"
 import { progressService } from "../machines/progressService"
-import { fetchCourses } from "../lib/fetch-courses"
+import { fetchGuitars } from "../lib/fetch-guitars"
 
-export default function Home({ content, courses }) {
+export default function Home({ content, guitars }) {
   return (
     <Layout
       content={content}
-      courses={courses}
+      guitars={guitars}
       progressService={progressService}
     >
       <Head>
@@ -23,8 +23,8 @@ export default function Home({ content, courses }) {
 
       <HomeHero />
       <HomeFeatures />
-      <HomeCourses
-        courses={courses}
+      <HomeGuitars
+        guitars={guitars}
         content={content}
         progressService={progressService}
       />
@@ -33,12 +33,12 @@ export default function Home({ content, courses }) {
 }
 
 export async function getStaticProps({ params }) {
-  const coursesJson = await fetchCourses()
-  const courses = Object.keys(coursesJson)
+  const guitarsJson = await fetchGuitars()
+  const guitars = Object.keys(guitarsJson)
   return {
     props: {
-      content: coursesJson,
-      courses,
+      content: guitarsJson,
+      guitars,
     },
   }
 }

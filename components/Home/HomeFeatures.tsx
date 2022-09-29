@@ -9,27 +9,27 @@ import {
 
 const features = [
   {
-    name: "Prepare your Testing Mindset",
+    name: "Select your guitar",
     icon: LightBulbIcon,
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    name: "Learn What to Test",
+    name: "Learn how to set it up",
     icon: BeakerIcon,
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    name: "Debug Failing Tests Efficiently",
+    name: "Learn how to play -- first chords",
     icon: TerminalIcon,
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    name: "Learn Database Initialization & Seeding",
+    name: "Learn how to play -- soloing",
     icon: DatabaseIcon,
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    name: "Understand Different Testing Types",
+    name: "Understand different playing styles",
     icon: CodeIcon,
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },

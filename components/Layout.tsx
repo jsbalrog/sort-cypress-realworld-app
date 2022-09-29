@@ -9,7 +9,7 @@ const Footer = dynamic(() => import("./Footer"), {
 export default function Layout({
   children,
   content,
-  courses,
+  guitars,
   progressService,
 }) {
   return (
@@ -20,7 +20,7 @@ export default function Layout({
 
       <Header
         content={content}
-        courses={courses}
+        guitars={guitars}
         progressService={progressService}
       />
       {children}

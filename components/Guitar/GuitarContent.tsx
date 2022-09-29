@@ -1,17 +1,17 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
-import CourseProgress from "./CourseProgress"
+import GuitarProgress from "./GuitarProgress"
 
-const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
+const CourseNextLessonBtn = dynamic(() => import("./GuitarNextLessonBtn"), {
   ssr: false,
 })
 
-export default function CourseContent({
+export default function GuitarContent({
   title,
   lessons,
   learnFeatures,
   progressService,
-  course,
+  guitar,
 }) {
   const stats = [{ label: "Lessons", value: lessons.length }]
 
@@ -26,8 +26,8 @@ export default function CourseContent({
                 {title}
               </h2>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
-                <CourseProgress
-                  course={course}
+                <GuitarProgress
+                  guitar={guitar}
                   lessons={lessons}
                   progressService={progressService}
                 />
@@ -84,7 +84,7 @@ export default function CourseContent({
                 <CourseNextLessonBtn
                   lessons={lessons}
                   progressService={progressService}
-                  course={course}
+                  guitar={guitar}
                 />
               </div>
             </div>

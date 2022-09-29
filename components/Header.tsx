@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
-import coursesJson from "../data/courses.json"
+import guitarsJson from "../data/guitars.json"
 import { MenuIcon } from "@heroicons/react/outline"
 import { ChevronDownIcon, CodeIcon } from "@heroicons/react/solid"
 
@@ -10,8 +10,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Header({ content, courses, progressService }) {
-  const coursesJsonCourses = Object.keys(coursesJson)
+export default function Header({ content, guitars, progressService }) {
+  const guitarsJsonGuitars = Object.keys(guitarsJson)
 
   return (
     <>
@@ -46,9 +46,9 @@ export default function Header({ content, courses, progressService }) {
                           open ? "text-gray-900" : "text-gray-500",
                           "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         )}
-                        data-test="courses-dropdown"
+                        data-test="guitars-dropdown"
                       >
-                        <span>Courses</span>
+                        <span>Guitars</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "text-gray-600" : "text-gray-400",
@@ -70,12 +70,12 @@ export default function Header({ content, courses, progressService }) {
                         <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
                           <div
                             className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
-                            data-test="courses-dropdown-menu"
+                            data-test="guitars-dropdown-menu"
                           >
-                            {coursesJsonCourses.map((course, index) => (
+                            {guitarsJsonGuitars.map((guitar, index) => (
                               <a
-                                key={coursesJson[course].slug}
-                                href={`/${coursesJson[course].slug}`}
+                                key={guitarsJson[guitar].slug}
+                                href={`/${guitarsJson[guitar].slug}`}
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
@@ -83,11 +83,11 @@ export default function Header({ content, courses, progressService }) {
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
                                         {`${index + 1}. ${
-                                          coursesJson[course].title
+                                          guitarsJson[guitar].title
                                         }`}
                                       </p>
                                       <p className="mt-1 text-sm text-gray-500">
-                                        {coursesJson[course].description}
+                                        {guitarsJson[guitar].description}
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">
@@ -111,7 +111,7 @@ export default function Header({ content, courses, progressService }) {
       </Popover>
       <MobileNav
         content={content}
-        courses={courses}
+        guitars={guitars}
         progressService={progressService}
       />
     </>

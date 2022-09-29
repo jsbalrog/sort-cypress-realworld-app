@@ -6,7 +6,7 @@ import {
   getChallenge,
   isSectionCompleted,
 } from "../utils/machineUtils"
-import coursesJson from "../data/courses.json"
+import guitarsJson from "../data/guitars.json"
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
@@ -49,7 +49,7 @@ export const progressMachine = createMachine(
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const challenge = getChallenge(
-          coursesJson,
+          guitarsJson,
           event.id,
           event.challengeIndex
         )

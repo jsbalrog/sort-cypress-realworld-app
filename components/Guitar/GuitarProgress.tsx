@@ -18,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function CourseProgress({ lessons, progressService, course }) {
+export default function GuitarProgress({ lessons, progressService, guitar }) {
   return (
     <nav aria-label="Progress" className="mt-12" data-test="course-steps">
       <ol className="overflow-hidden">
@@ -37,25 +37,25 @@ export default function CourseProgress({ lessons, progressService, course }) {
               lessons={lessons}
               isCompleted={isLessonCompleted(
                 progressService,
-                `${course}/${lesson.slug}`
+                `${guitar}/${lesson.slug}`
               )}
             />
 
             <div className="relative flex items-start group">
               {isLessonCompleted(
                 progressService,
-                `${course}/${lesson.slug}`
+                `${guitar}/${lesson.slug}`
               ) && <CompletedLesson index={index} />}
 
               {!isLessonCompleted(
                 progressService,
-                `${course}/${lesson.slug}`
+                `${guitar}/${lesson.slug}`
               ) && <IncompleteLesson index={index} />}
 
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <Link href={`/${course}/${lesson.slug}`}>
+                  <Link href={`/${guitar}/${lesson.slug}`}>
                     <a data-test={`lesson-progress-link-${index}`}>
                       {lesson.title}
                     </a>

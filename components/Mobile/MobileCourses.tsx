@@ -5,10 +5,10 @@ const MobileProgress = dynamic(() => import("./MobileProgress"), {
   ssr: false,
 })
 
-export default function Courses({ courses, content, progressService }) {
+export default function Guitars({ guitars, content, progressService }) {
   return (
     <div className="relative bg-white overflow-hidden">
-      {courses.map((course, index) => (
+      {guitars.map((course, index) => (
         <div key={course} data-test={`course-${index}`}>
           <div className="relative">
             <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">

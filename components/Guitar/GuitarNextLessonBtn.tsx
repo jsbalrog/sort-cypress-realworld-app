@@ -1,14 +1,14 @@
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
-export default function CourseNextLessonBtn({
+export default function GuitarNextLessonBtn({
   lessons,
   progressService,
-  course,
+  guitar,
 }) {
   const incompleLessons = lessons
     .map((lesson) => {
-      if (!isLessonCompleted(progressService, `${course}/${lesson.slug}`)) {
+      if (!isLessonCompleted(progressService, `${guitar}/${lesson.slug}`)) {
         return lesson.slug
       }
     })
@@ -30,7 +30,7 @@ export default function CourseNextLessonBtn({
     if (!incompleLessons.length) {
       return "/"
     } else {
-      return `${course}/${incompleLessons[0]}`
+      return `${guitar}/${incompleLessons[0]}`
     }
   }
 

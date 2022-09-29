@@ -1,10 +1,10 @@
 import path from "path"
 import fs from "fs"
 import slugify from "slugify"
-import coursesJson from "../data/courses.json"
+import guitarsJson from "../data/guitars.json"
 
-Object.keys(coursesJson).forEach((course) => {
-  let { slug, title, lessons } = coursesJson[course]
+Object.keys(guitarsJson).forEach((course) => {
+  let { slug, title, lessons } = guitarsJson[course]
   slug = slugify(title, { lower: true })
 
   lessons.forEach((lesson) => {
@@ -14,5 +14,5 @@ Object.keys(coursesJson).forEach((course) => {
 
 fs.writeFileSync(
   path.join(process.cwd(), "learn.json"),
-  JSON.stringify(coursesJson, null, 2)
+  JSON.stringify(guitarsJson, null, 2)
 )

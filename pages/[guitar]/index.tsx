@@ -1,71 +1,71 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import CourseHero from "../../components/Course/CourseHero"
-import CourseContent from "../../components/Course/CourseContent"
+import GuitarHero from "../../components/Guitar/GuitarHero"
+import GuitarContent from "../../components/Guitar/GuitarContent"
 import { progressService } from "../../machines/progressService"
-import { fetchCourses } from "../../lib/fetch-courses"
+import { fetchGuitars } from "../../lib/fetch-guitars"
 
 export default function SectionPage({
   title,
   lessons,
   description,
+  image,
   learnFeatures,
   content,
-  courses,
-  course,
+  guitars,
+  guitar,
 }) {
   return (
     <Layout
       content={content}
-      courses={courses}
+      guitars={guitars}
       progressService={progressService}
     >
       <Head>
-        <title>{title} | Testing Next.js Applications with Cypress</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
 
-      <CourseHero
+      <GuitarHero
         title={title}
         description={description}
-        image={content[course].image}
+        image={image}
       />
-      <CourseContent
+      <GuitarContent
         title={title}
         lessons={lessons}
         learnFeatures={learnFeatures}
         progressService={progressService}
-        course={course}
+        guitar={guitar}
       />
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
-  const coursesJson = await fetchCourses()
-  const { title, lessons, description, learnFeatures } =
-    coursesJson[params.course]
-  const courses = Object.keys(coursesJson)
+  const guitarsJson = await fetchGuitars()
+  const { title, slug, image, lessons, description, learnFeatures } = guitarsJson[params.guitar]
+  const guitars = Object.keys(guitarsJson)
 
   return {
     props: {
       lessons,
       title,
+      slug,
       description,
       learnFeatures,
-      content: coursesJson,
-      courses,
-      course: params.course,
+      image,
+      guitars
     },
   }
 }
 
 export async function getStaticPaths() {
-  const coursesJson = await fetchCourses()
-  const courses = Object.keys(coursesJson)
-  const paths = courses.map((course) => {
-    const { title, lessons } = coursesJson[course]
-    return { params: { course, lessons, title } }
+  const guitarsJson = await fetchGuitars()
+  const guitars = Object.keys(guitarsJson)
+  const paths = guitars.map((guitar) => {
+    const { slug } = guitarsJson[guitar]
+    return { params: { guitar:slug } }
   })
 
   return {

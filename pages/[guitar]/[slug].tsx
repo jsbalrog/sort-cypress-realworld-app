@@ -13,7 +13,7 @@ import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
-import { fetchCourses } from "../../lib/fetch-courses"
+import { fetchGuitars } from "../../lib/fetch-guitars"
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
@@ -154,11 +154,11 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const coursesJson = await fetchCourses()
-  const courses = Object.keys(coursesJson)
+  const guitarsJson = await fetchGuitars()
+  const guitars = Object.keys(guitarsJson)
   const contentFilePath = path.join(
     CONTENT_PATH,
-    `${params.course}/${params.slug}.mdx`
+    `${params.guitar}/${params.slug}.mdx`
   )
   const source = fs.readFileSync(contentFilePath)
   const { content, data } = matter(source)
@@ -174,9 +174,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    coursesJson[params.course].lessons
+    guitarsJson[params.course].lessons
   )
-  const { title, lessons } = coursesJson[params.course]
+  const { title, lessons } = guitarsJson[params.guitar]
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -195,10 +195,10 @@ export const getStaticProps = async ({ params }) => {
       sectionLessons: lessons,
       nextLesson,
       sectionTitle: title,
-      lessonPath: `${params.course}/${params.slug}`,
-      coursesJson,
-      courses,
-      course: params.course,
+      lessonPath: `${params.guitar}/${params.slug}`,
+      guitarsJson,
+      guitars,
+      guitar: params.guitar,
     },
   }
 }
