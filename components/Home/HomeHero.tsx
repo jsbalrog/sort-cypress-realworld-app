@@ -5,12 +5,12 @@ import Subscribe from "../Subscribe"
 
 const features = [
   {
-    name: "4 Guitars",
-    description: "",
+    name: "3 Guitars",
+    description: "Choose from some of the best guitars available",
   },
   {
     name: "25+ Lessons",
-    description: "",
+    description: "From simple chords to advanced shredding",
   },
 ]
 
